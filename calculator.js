@@ -29,14 +29,19 @@ const operate = (a, b, operator) => {
             return divide(a, b);
     }
 };
-console.log(operate(3, 4,"*"));
-console.log(operate(3, 4,"+"));
-console.log(operate(3, 4,"-"));
-console.log(operate(3, 35234,"/"));
+console.log(operate(3, 4, "*"));
+
 
 const container = document.querySelector('#container');
-const Output = document.querySelector('#Output')
-const button = document.querySelectorAll('button'); 
+const result = document.querySelector('#result');
+const buttonsDigit = document.querySelectorAll('#digits button');
+
+    
+    buttonsDigit.forEach((button) => {
+        button.addEventListener('click', (e) => {
+        const firstNumber = result.textContent += e.target.textContent;
+    });
+    });
 
 
 
