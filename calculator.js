@@ -34,4 +34,12 @@ console.log(operate(3, 4,"+"));
 console.log(operate(3, 4,"-"));
 console.log(operate(3, 35234,"/"));
 
+const container = document.querySelector('#container');
+const Output = document.querySelector('#Output')
+const button = document.querySelectorAll('button'); 
+
+
+
+
+
 
