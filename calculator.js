@@ -1,18 +1,37 @@
-let a,b,c,d;
 
-const add = (a,b) => {
-console.log(Number(a) +  Number(b)); 
+const add = (a, b) => {
+    return a + b;
 };
-console.log(add(3,9));
 
-const subtract = () => {
+const subtract = (a, b) => {
     return a - b;
 };
 
-const multiply = () => {
+const multiply = (a, b) => {
     return a * b;
 };
 
-const divide = () => {
+const divide = (a, b) => {
     return a / b;
 };
+let a, b, operator;
+
+
+const operate = (a, b, operator) => {
+    switch (operator) {
+        case "+":
+            return add(a, b);
+        case "-":
+            return subtract(a, b);
+        case "*":
+            return multiply(a, b);
+        case "/":
+            return divide(a, b);
+    }
+};
+console.log(operate(3, 4,"*"));
+console.log(operate(3, 4,"+"));
+console.log(operate(3, 4,"-"));
+console.log(operate(3, 35234,"/"));
+
+
