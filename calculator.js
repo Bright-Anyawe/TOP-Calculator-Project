@@ -70,7 +70,9 @@ equalAssign.addEventListener('click', () => {
     displayResult.textContent = operate(a,b,operator);
 });
 
-
+clear.addEventListener('click', () => {
+    displayResult.textContent = '';
+})
 
 
 
