@@ -1,6 +1,7 @@
 let a = '';
 let b = '';
-let operator;
+let operator = '';
+let finalResult = null;
 
 const add = (a, b) => {
     return parseInt(a) + parseInt(b);
@@ -18,8 +19,6 @@ const divide = (a, b) => {
     return parseInt(a) / parseInt(b);
 };
 
-
-
 const operate = (a, b, operator) => {
     switch (operator) {
         case "+":
@@ -32,7 +31,6 @@ const operate = (a, b, operator) => {
             return divide(a, b);
     }
 };
-console.log(operate(3, 4, "*"));
 
 
 const container = document.querySelector('#container');
@@ -45,34 +43,68 @@ const clear = document.querySelector('#Clear');
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', (e) => {
-        displayResult.textContent += e.target.textContent;
+        const clickNumber = e.target.textContent;
+
+        // if (finalResult !== null) {
+        //     a = '';
+        //     b = '';
+        //     operator = '';
+        //     finalResult = null;
+        // }
+
 
         if (!operator) {
-            a += e.target.textContent;
+            a += clickNumber;
             console.log(a);
-        }   
-        else {
-            b += e.target.textContent;
+        }
+        else if (operator) {
+            b += clickNumber;
             console.log(b);
         }
+
+        displayResult.textContent += clickNumber;
+
     });
 });
-
 
 buttonsOperator.forEach((button) => {
     button.addEventListener('click', (e) => {
-        operator = displayResult.textContent = e.target.textContent;
+        if (operator) {
+            finalResult = operate(Number(a), Number(b), operator);
+            if (finalResult !== null) {
+                // If a previous calculation has been performed, start a new operation
+                a = finalResult.toString();
+                displayResult.textContent = a
+                b = '';
+                operator = '';
+                finalResult = null;
+            };
+        }
+
+        operator = e.target.textContent;
+        displayResult.textContent += " " + operator + " ";
         console.log(operator)
+
+
     });
 });
 
-equalAssign.addEventListener('click', () => {
-    displayResult.textContent = operate(a,b,operator);
-});
 
-clear.addEventListener('click', () => {
+const displayTotal = () => {
+
+    finalResult = operate(Number(a), Number(b), operator);
+    displayResult.textContent = finalResult;
+};
+equalAssign.addEventListener('click', displayTotal);
+
+const clearAll = () => {
+    a = '';
+    b = '';
+    operator = '';
     displayResult.textContent = '';
-})
+    finalResult = '';
+}
+clear.addEventListener('click', clearAll);
 
 
 
@@ -85,7 +117,7 @@ clear.addEventListener('click', () => {
 //         if (!operator) {
 //             a += e.target.textContent;
 //             console.log(a);
-//         }   
+//         }
 //         else {
 //             b += e.target.textContent;
 //             console.log(b);

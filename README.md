@@ -21,3 +21,7 @@ divide
 - Make the calculator work! You’ll need to store the first number and second number
  that are input into the calculator, utilize the operator that the user selects,
   and then operate() on the two numbers when the user presses the “=” key.
+  ### NOTE!!
+  - If you want how I did it check the breakpoint in the Commit message!!
+
+- watch out for and fix these bugs if they show up in your code: 
