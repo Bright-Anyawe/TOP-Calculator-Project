@@ -45,14 +45,6 @@ buttonsNumber.forEach((button) => {
     button.addEventListener('click', (e) => {
         const clickNumber = e.target.textContent;
 
-        // if (finalResult !== null) {
-        //     a = '';
-        //     b = '';
-        //     operator = '';
-        //     finalResult = null;
-        // }
-
-
         if (!operator) {
             a += clickNumber;
             console.log(a);
@@ -70,7 +62,8 @@ buttonsNumber.forEach((button) => {
 buttonsOperator.forEach((button) => {
     button.addEventListener('click', (e) => {
         if (operator) {
-            finalResult = operate(Number(a), Number(b), operator);
+            finalResult = operate(a, b, operator);
+
             if (finalResult !== null) {
                 // If a previous calculation has been performed, start a new operation
                 a = finalResult.toString();
@@ -92,7 +85,7 @@ buttonsOperator.forEach((button) => {
 
 const displayTotal = () => {
 
-    finalResult = operate(Number(a), Number(b), operator);
+    finalResult = operate(a,b, operator);
     displayResult.textContent = finalResult;
 };
 equalAssign.addEventListener('click', displayTotal);
@@ -107,21 +100,4 @@ const clearAll = () => {
 clear.addEventListener('click', clearAll);
 
 
-
-
-
-
-
-// buttonsNumber.forEach((button) => {
-//     button.addEventListener('click', (e) => {
-//         if (!operator) {
-//             a += e.target.textContent;
-//             console.log(a);
-//         }
-//         else {
-//             b += e.target.textContent;
-//             console.log(b);
-//         }
-//     })
-// })
 
