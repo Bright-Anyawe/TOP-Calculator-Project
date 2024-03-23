@@ -62,7 +62,7 @@ buttonsNumber.forEach((button) => {
 buttonsOperator.forEach((button) => {
     button.addEventListener('click', (e) => {
         if (operator) {
-            finalResult = operate(a, b, operator);
+            finalResult = Number(operate(a,b, operator).toFixed(5));
 
             if (finalResult !== null) {
                 // If a previous calculation has been performed, start a new operation
@@ -85,7 +85,7 @@ buttonsOperator.forEach((button) => {
 
 const displayTotal = () => {
 
-    finalResult = operate(a,b, operator);
+    finalResult = Number(operate(a,b, operator).toFixed(9));
     displayResult.textContent = finalResult;
 };
 equalAssign.addEventListener('click', displayTotal);
