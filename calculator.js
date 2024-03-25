@@ -43,96 +43,127 @@ const del = document.querySelector('#delete');
 const decimal = document.querySelector('#dot');
 
 
+const handleNumberInput = (clickNumber) => {
+
+    if (!operator) {
+        a += clickNumber;
+        console.log(a);
+    }
+    else if (operator) {
+        b += clickNumber;
+        console.log(b);
+    }
+
+    displayResult.textContent += clickNumber;
+}
+
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', (e) => {
-        const clickNumber = e.target.textContent;
-        
-        if (!operator) {
-            a += clickNumber;
-            console.log(a);
-        }
-        else if (operator) {
-            b += clickNumber;
-            console.log(b);
-        }        
-       
-        displayResult.textContent += clickNumber;
+        handleNumberInput(e.target.textContent);
 
     });
-
-
 });
+
+const handleOperatorInput = (inputOperator) => {
+    if (operator) {
+        finalResult = Number(operate(a, b, operator).toFixed(5));
+
+        if (finalResult) {
+            // If a previous calculation has been performed, start a new operation
+            a = finalResult.toString();
+            displayResult.textContent = a
+            b = '';
+            operator = '';
+            finalResult = null;
+        };
+    }
+
+    operator = inputOperator;
+    displayResult.textContent += " " + operator + " ";
+    console.log(operator)
+}
 
 buttonsOperator.forEach((button) => {
     button.addEventListener('click', (e) => {
-        if (operator) {
-            finalResult = Number(operate(a, b, operator).toFixed(5));
-
-            if (finalResult !== null) {
-                // If a previous calculation has been performed, start a new operation
-                a = finalResult.toString();
-                displayResult.textContent = a
-                b = '';
-                operator = '';
-                finalResult = null;
-            };
-        }
-
-        operator = e.target.textContent;
-        displayResult.textContent += " " + operator + " ";
-        console.log(operator)
-
-
+        handleOperatorInput(e.target.textContent);
     });
 });
 
-
-
 const displayTotal = () => {
-
     finalResult = Number(operate(a, b, operator).toFixed(9));
     displayResult.textContent = finalResult;
     console.log(finalResult);
-
-
 };
 equalAssign.addEventListener('click', displayTotal);
+
+
+function getDecimal() {
+
+    if (a && !operator && !a.includes('.')) {
+        a += '.';
+        displayResult.textContent = a;
+    }
+    if (b && operator && !b.includes('.')) {
+        b += '.';
+        displayResult.textContent += '.';
+
+    }
+
+}
+decimal.addEventListener('click', getDecimal);
 
 const clearAll = () => {
     a = '';
     b = '';
     operator = '';
     displayResult.textContent = '';
-    finalResult = '';
+    finalResult = null;
 }
 clear.addEventListener('click', clearAll);
 
-del.addEventListener('click', deleteKey);
 
-function deleteKey() {
- if (operator) {
-    b = b.slice(0, -1);
-    displayResult.textContent = displayResult.textContent.slice(0, -1);
- }
- else {
-    a = a.slice(0, -1);
-    displayResult.textContent = displayResult.textContent.slice(0, -1);
- }
+function handleDeleteKey() {
+    if (operator) {
+        b = b.slice(0, -1);
+        displayResult.textContent = displayResult.textContent.slice(0, -1);
+    }
+    else {
+        a = a.slice(0, -1);
+        displayResult.textContent = displayResult.textContent.slice(0, -1);
+    }
 };
+del.addEventListener('click', handleDeleteKey);
 
-function getDecimal(e) {
-    let clickDecimal = e.target.textContent;
-    if (a && !operator && !a.includes('.')) {
-      displayResult.textContent = a += clickDecimal
-        
+
+//Event listener for the keyboard
+
+window.addEventListener('keydown', (e) => {
+
+    const key = e.key;
+
+    if (/[0-9]/.test(key)) {
+        handleNumberInput(key);
     }
-    if (b && operator && !b.includes('.')) {
-       b += clickDecimal;
-       displayResult.textContent += clickDecimal;
 
+    if (/[+\-*/]/.test(key)) {
+        handleOperatorInput(key);
     }
 
-}
-decimal.addEventListener('click', getDecimal);
+    if (key === 'Enter' || key === '=') {
+        displayTotal()
+    }
+
+    if (key === '.') {
+        getDecimal();
+    }
+
+    if (key === 'Escape' || key === 'delete') {
+        clearAll();
+    }
+
+    if (key === "Backspace") {
+        handleDeleteKey();
+    }
+});
 
 
