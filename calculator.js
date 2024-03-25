@@ -39,12 +39,14 @@ const buttonsOperator = document.querySelectorAll('#operators button');
 const buttonsNumber = document.querySelectorAll('#digits button');
 const equalAssign = document.querySelector('#assign');
 const clear = document.querySelector('#Clear');
+const del = document.querySelector('#delete');
+const dot = document.querySelector('#dot');
 
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', (e) => {
         const clickNumber = e.target.textContent;
-
+        
         if (!operator) {
             a += clickNumber;
             console.log(a);
@@ -53,16 +55,19 @@ buttonsNumber.forEach((button) => {
             b += clickNumber;
             console.log(b);
         }
-
+        
+       
         displayResult.textContent += clickNumber;
 
     });
+
+
 });
 
 buttonsOperator.forEach((button) => {
     button.addEventListener('click', (e) => {
         if (operator) {
-            finalResult = Number(operate(a,b, operator).toFixed(5));
+            finalResult = Number(operate(a, b, operator).toFixed(5));
 
             if (finalResult !== null) {
                 // If a previous calculation has been performed, start a new operation
@@ -83,10 +88,13 @@ buttonsOperator.forEach((button) => {
 });
 
 
+
 const displayTotal = () => {
 
-    finalResult = Number(operate(a,b, operator).toFixed(9));
+    finalResult = Number(operate(a, b, operator).toFixed(9));
     displayResult.textContent = finalResult;
+
+
 };
 equalAssign.addEventListener('click', displayTotal);
 
@@ -99,5 +107,17 @@ const clearAll = () => {
 }
 clear.addEventListener('click', clearAll);
 
+del.addEventListener('click', deleteKey);
+
+function deleteKey() {
+ if (operator) {
+    b = b.slice(0, -1);
+    displayResult.textContent = displayResult.textContent.slice(0, -1);
+ }
+ else {
+    a = a.slice(0, -1);
+    displayResult.textContent = displayResult.textContent.slice(0, -1);
+ }
+}
 
 
