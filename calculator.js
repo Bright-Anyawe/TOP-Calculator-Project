@@ -4,19 +4,19 @@ let operator = '';
 let finalResult = null;
 
 const add = (a, b) => {
-    return parseInt(a) + parseInt(b);
+    return parseFloat(a) + parseFloat(b);
 };
 
 const subtract = (a, b) => {
-    return parseInt(a) - parseInt(b);
+    return parseFloat(a) - parseFloat(b);
 };
 
 const multiply = (a, b) => {
-    return parseInt(a) * parseInt(b);
+    return parseFloat(a) * parseFloat(b);
 };
 
 const divide = (a, b) => {
-    return parseInt(a) / parseInt(b);
+    return parseFloat(a) / parseFloat(b);
 };
 
 const operate = (a, b, operator) => {
@@ -40,7 +40,7 @@ const buttonsNumber = document.querySelectorAll('#digits button');
 const equalAssign = document.querySelector('#assign');
 const clear = document.querySelector('#Clear');
 const del = document.querySelector('#delete');
-const dot = document.querySelector('#dot');
+const decimal = document.querySelector('#dot');
 
 
 buttonsNumber.forEach((button) => {
@@ -54,8 +54,7 @@ buttonsNumber.forEach((button) => {
         else if (operator) {
             b += clickNumber;
             console.log(b);
-        }
-        
+        }        
        
         displayResult.textContent += clickNumber;
 
@@ -93,6 +92,7 @@ const displayTotal = () => {
 
     finalResult = Number(operate(a, b, operator).toFixed(9));
     displayResult.textContent = finalResult;
+    console.log(finalResult);
 
 
 };
@@ -118,6 +118,21 @@ function deleteKey() {
     a = a.slice(0, -1);
     displayResult.textContent = displayResult.textContent.slice(0, -1);
  }
+};
+
+function getDecimal(e) {
+    let clickDecimal = e.target.textContent;
+    if (a && !operator && !a.includes('.')) {
+      displayResult.textContent = a += clickDecimal
+        
+    }
+    if (b && operator && !b.includes('.')) {
+       b += clickDecimal;
+       displayResult.textContent += clickDecimal;
+
+    }
+
 }
+decimal.addEventListener('click', getDecimal);
 
 
