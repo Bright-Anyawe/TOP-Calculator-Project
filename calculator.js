@@ -1,7 +1,4 @@
-let a = '';
-let b = '';
-let operator = '';
-let finalResult = null;
+
 
 const add = (a, b) => {
     return parseFloat(a) + parseFloat(b);
@@ -42,14 +39,25 @@ const clear = document.querySelector('#Clear');
 const del = document.querySelector('#delete');
 const decimal = document.querySelector('#dot');
 
+let a = '';
+let b = '';
+let operator = '';
+let finalResult = null;
+displayResult.textContent = '0';
 
 const handleNumberInput = (clickNumber) => {
 
     if (!operator) {
+
+        if (displayResult.textContent === '0') {
+            displayResult.textContent = '';
+        }
+        
         a += clickNumber;
         console.log(a);
     }
     else if (operator) {
+       
         b += clickNumber;
         console.log(b);
     }
@@ -113,23 +121,36 @@ function getDecimal() {
 decimal.addEventListener('click', getDecimal);
 
 const clearAll = () => {
+    
     a = '';
     b = '';
-    operator = '';
-    displayResult.textContent = '';
-    finalResult = null;
+    operator = null;
+    displayResult.textContent = '0';
+    finalResult = '';
 }
 clear.addEventListener('click', clearAll);
 
 
 function handleDeleteKey() {
+ 
+    
+
     if (operator) {
-        b = b.slice(0, -1);
-        displayResult.textContent = displayResult.textContent.slice(0, -1);
+        if(b.length > 0) {
+            b = b.slice(0, -1);
+            displayResult.textContent = b;
+
+        }
     }
     else {
-        a = a.slice(0, -1);
-        displayResult.textContent = displayResult.textContent.slice(0, -1);
+        if(a.length > 0) {
+            a = a.slice(0, -1);
+            displayResult.textContent = a;
+
+        }
+    }
+    if (displayResult.textContent === '') {
+        displayResult.textContent = '0';
     }
 };
 del.addEventListener('click', handleDeleteKey);

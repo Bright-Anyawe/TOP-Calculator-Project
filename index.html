@@ -12,23 +12,23 @@
 <body>
     <main id="container" class="calculator">
 
-        <div id="result"></div>
-
-
+        <div class="calculator_screen">
+            <div id="result">0</div>
+        </div>
+        
         <section>
-            <div class="Clear">
-                <button id="Clear">Clear All</button>
-                <button id="delete">BS</button>
-            </div>
+            <span class="Clear">
+                <button id="Clear">AC</button>
+                <button id="delete">Delete</button>
+            </span>
 
-            <aside id="operators" class="math_operators">
+            <span id="operators" class="math_operators">
                 <button value="+" id="add">+</button>
                 <button value="-" id="subtract">-</button>
                 <button value="*" id="multiply">*</button>
-                <button value="/" id="divide">/</button>
-            </aside>
-
-
+            <button value="/" id="divide">/</button>
+        </span>
+        
             <span id="digits" class="numbers">
                 <button value="1">1</button>
                 <button value="2">2</button>
@@ -41,11 +41,11 @@
                 <button value="9">9</button>
                 <button value="0">0</button>
             </span>
-
-            <div id="special_symbols">
+            
+            <span id="special_symbols">
                 <button value="." id="dot">.</button>
-                <button value="=" id="assign">=</button>
-            </div>
+                <button value="=" id="assign" class="equal">=</button>
+            </span>
         </section>
 
 
