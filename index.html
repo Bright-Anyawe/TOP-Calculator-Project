@@ -12,40 +12,30 @@
 <body>
     <main id="container" class="calculator">
 
-        <div class="calculator_screen">
-            <div id="result">0</div>
-        </div>
-        
-        <section>
-            <span class="Clear">
-                <button id="Clear">AC</button>
-                <button id="delete">Delete</button>
-            </span>
+            <div id="result" class="calculator_screen">0</div>
 
-            <span id="operators" class="math_operators">
-                <button value="+" id="add">+</button>
-                <button value="-" id="subtract">-</button>
-                <button value="*" id="multiply">*</button>
-            <button value="/" id="divide">/</button>
-        </span>
-        
-            <span id="digits" class="numbers">
-                <button value="1">1</button>
-                <button value="2">2</button>
-                <button value="3">3</button>
-                <button value="4">4</button>
-                <button value="5">5</button>
-                <button value="6">6</button>
-                <button value="7">7</button>
-                <button value="8">8</button>
-                <button value="9">9</button>
-                <button value="0">0</button>
-            </span>
+        <section>
+            <button value="+" id="operators" class="math_operators">+</button>
+            <button value="-" id="operators" class="math_operators">-</button>
+            <button value="*" id="operators" class="math_operators">*</button>
+
+            <button value="/" id="operators" class="math_operators">/</button>
             
-            <span id="special_symbols">
-                <button value="." id="dot">.</button>
-                <button value="=" id="assign" class="equal">=</button>
-            </span>
+            <button value="1" id="digits" class="numbers">1</button>
+            <button value="2" id="digits" class="numbers">2</button>
+            <button value="3" id="digits" class="numbers">3</button>
+            <button id="Clear" class="Clear">AC</button>
+            <button value="4" id="digits" class="numbers">4</button>
+            <button value="5" id="digits" class="numbers">5</button>
+            <button value="6" id="digits" class="numbers">6</button>
+            <button id="delete" class="Clear">Del</button>
+            <button value="7" id="digits" class="numbers">7</button>
+            <button value="8" id="digits" class="numbers">8</button>
+            <button value="9" id="digits" class="numbers">9</button>
+            <button value="." id="dot" class="special_symbols">.</button>
+            <button value="0" id="digits" class="numbers zero">0</button>
+            <button value="=" id="assign" class="special_symbols equal">=</button>
+
         </section>
 
 

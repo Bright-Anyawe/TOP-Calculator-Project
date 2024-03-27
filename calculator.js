@@ -1,5 +1,4 @@
 
-
 const add = (a, b) => {
     return parseFloat(a) + parseFloat(b);
 };
@@ -32,8 +31,8 @@ const operate = (a, b, operator) => {
 
 const container = document.querySelector('#container');
 const displayResult = document.querySelector('#result');
-const buttonsOperator = document.querySelectorAll('#operators button');
-const buttonsNumber = document.querySelectorAll('#digits button');
+const buttonsOperator = document.querySelectorAll('#operators');
+const buttonsNumber = document.querySelectorAll('#digits');
 const equalAssign = document.querySelector('#assign');
 const clear = document.querySelector('#Clear');
 const del = document.querySelector('#delete');
@@ -52,12 +51,12 @@ const handleNumberInput = (clickNumber) => {
         if (displayResult.textContent === '0') {
             displayResult.textContent = '';
         }
-        
+
         a += clickNumber;
         console.log(a);
     }
     else if (operator) {
-       
+
         b += clickNumber;
         console.log(b);
     }
@@ -121,7 +120,7 @@ function getDecimal() {
 decimal.addEventListener('click', getDecimal);
 
 const clearAll = () => {
-    
+
     a = '';
     b = '';
     operator = null;
@@ -132,18 +131,15 @@ clear.addEventListener('click', clearAll);
 
 
 function handleDeleteKey() {
- 
-    
-
     if (operator) {
-        if(b.length > 0) {
+        if (b.length > 0) {
             b = b.slice(0, -1);
             displayResult.textContent = b;
 
         }
     }
     else {
-        if(a.length > 0) {
+        if (a.length > 0) {
             a = a.slice(0, -1);
             displayResult.textContent = a;
 
@@ -178,7 +174,7 @@ window.addEventListener('keydown', (e) => {
         getDecimal();
     }
 
-    if (key === 'Escape' || key === 'delete') {
+    if (key === 'Escape' || key === 'Delete') {
         clearAll();
     }
 
