@@ -4,12 +4,14 @@ body {
     height: 100vh;
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-block: 3rem;
     position: relative;
     background-image: linear-gradient(to top, beige 0%, black 100%);
     background-attachment: fixed;
+    gap: 20px;
 }
 
 .calculator {
@@ -141,4 +143,19 @@ section button {
 .equal:active {
     background-color: black;
     color: aqua;
+}
+
+#footer {
+    font-size: 20px;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 900;
+    background: black;
+    color: white;
+    border-radius: 9px;
+    padding: 9px 0px;
+}
+
+#footer p {
+    margin: 0;
+    padding: 0px 1rem;
 }
