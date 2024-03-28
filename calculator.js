@@ -131,25 +131,29 @@ clear.addEventListener('click', clearAll);
 
 
 function handleDeleteKey() {
-    if (operator) {
-        if (b.length > 0) {
-            b = b.slice(0, -1);
-            displayResult.textContent = b;
 
-        }
+
+    if (operator) {
+
+        b = b.slice(0, -1);
+        displayResult.textContent = displayResult.textContent.slice(0, -1);
+
     }
     else {
-        if (a.length > 0) {
-            a = a.slice(0, -1);
-            displayResult.textContent = a;
 
-        }
+        a = a.slice(0, -1);
+        displayResult.textContent = displayResult.textContent.slice(0, -1);
+
+
     }
-    if (displayResult.textContent === '') {
-        displayResult.textContent = '0';
-    }
+if (displayResult.textContent === "") {
+    displayResult.textContent =  '0';
+}
+
 };
-del.addEventListener('click', handleDeleteKey);
+
+
+console.log(del.addEventListener('click', handleDeleteKey));
 
 
 //Event listener for the keyboard
