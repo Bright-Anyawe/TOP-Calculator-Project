@@ -136,24 +136,23 @@ function handleDeleteKey() {
     if (operator) {
 
         b = b.slice(0, -1);
-        displayResult.textContent = displayResult.textContent.slice(0, -1);
-
+        
     }
-    else {
+    displayResult.textContent = displayResult.textContent.slice(0, -1);
+
+     if (!operator) {
 
         a = a.slice(0, -1);
-        displayResult.textContent = displayResult.textContent.slice(0, -1);
-
-
+        
     }
+    displayResult.textContent = displayResult.textContent.slice(0, -1);
+
 if (displayResult.textContent === "") {
     displayResult.textContent =  '0';
 }
 
-};
-
-
-console.log(del.addEventListener('click', handleDeleteKey));
+};  
+del.addEventListener('click', handleDeleteKey);
 
 
 //Event listener for the keyboard
@@ -171,7 +170,7 @@ window.addEventListener('keydown', (e) => {
     }
 
     if (key === 'Enter' || key === '=') {
-        displayTotal()
+        displayTotal();
     }
 
     if (key === '.') {

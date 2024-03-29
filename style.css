@@ -14,6 +14,16 @@ body {
     gap: 20px;
 }
 
+#title {
+    font-size: 20px;
+    color: white;
+    font-weight: 900;
+    background-color: rgb(252, 216, 56);
+    text-shadow: 0px 0px 2px black;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
 .calculator {
     display: flex;
     flex-direction: column;
@@ -148,13 +158,14 @@ section button {
 }
 
 #footer {
-    font-size: 20px;
+    font-size: 19px;
     font-family: "Ubuntu", sans-serif;
     font-weight: 900;
     background: black;
     color: white;
     border-radius: 9px;
     padding: 9px -1px;
+    text-shadow: 0px 0px 5px black;
    
 
 }
@@ -162,5 +173,4 @@ section button {
 #footer p {
     margin: 0;
     padding: 0px 14px;
-    text-shadow: 0px 0px 5px black;
 }
