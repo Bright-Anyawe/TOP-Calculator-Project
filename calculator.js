@@ -173,6 +173,7 @@ function handleDeleteKey() {
         b = '';
         operator = null;
         displayResult.textContent = '0';
+        secondaryDisplay.textContent = '0';
         finalResult = '';
 
     }
