@@ -148,7 +148,14 @@ function handleDeleteKey() {
     displayResult.textContent = displayResult.textContent.slice(0, -1);
 
 if (displayResult.textContent === "") {
-    displayResult.textContent =  '0';
+  
+    a = '';
+    b = '';
+    operator = null;
+    displayResult.textContent = '0';
+    finalResult = '';
+    
+    
 }
 
 };  
