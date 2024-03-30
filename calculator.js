@@ -65,16 +65,17 @@ const handleNumberInput = (clickNumber) => {
         }
 
         a += clickNumber;
+        displayResult.textContent = a
         console.log(a);
     }
     else if (operator) {
 
         b += clickNumber;
+        displayResult.textContent = b
         console.log(b);
     }
-
-    displayResult.textContent += clickNumber;
     secondaryDisplay.textContent += clickNumber;
+    
 }
 
 buttonsNumber.forEach((button) => {
@@ -96,11 +97,11 @@ const handleOperatorInput = (inputOperator) => {
             b = '';
             operator = '';
             finalResult = null;
+            
         };
     }
 
     operator = inputOperator;
-    displayResult.textContent += " " + operator + " ";
     secondaryDisplay.textContent += " " + operator + " ";
     console.log(operator)
 }
@@ -114,6 +115,7 @@ buttonsOperator.forEach((button) => {
 const displayTotal = () => {
     finalResult = Number(operate(a, b, operator).toFixed(9));
     displayResult.textContent = finalResult;
+    secondaryDisplay.textContent +=  " " + equalAssign.value + " ";
     console.log(finalResult);
 };
 equalAssign.addEventListener('click', displayTotal);
