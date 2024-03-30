@@ -37,19 +37,31 @@ const equalAssign = document.querySelector('#assign');
 const clear = document.querySelector('#Clear');
 const del = document.querySelector('#delete');
 const decimal = document.querySelector('#dot');
+const secondaryDisplay = document.querySelector('#secondary-display')
 
 let a = '';
 let b = '';
 let operator = '';
 let finalResult = null;
 displayResult.textContent = '0';
+secondaryDisplay.textContent = '0';
 
 const handleNumberInput = (clickNumber) => {
 
+    if (finalResult) {
+        a = '';
+        b = '';
+        operator = null;
+        displayResult.textContent = '0';
+        secondaryDisplay.textContent = '0';
+        finalResult = '';
+    }
+
     if (!operator) {
 
-        if (displayResult.textContent === '0') {
+        if (displayResult.textContent === '0' && secondaryDisplay.textContent === '0') {
             displayResult.textContent = '';
+            secondaryDisplay.textContent = '';
         }
 
         a += clickNumber;
@@ -62,6 +74,7 @@ const handleNumberInput = (clickNumber) => {
     }
 
     displayResult.textContent += clickNumber;
+    secondaryDisplay.textContent += clickNumber;
 }
 
 buttonsNumber.forEach((button) => {
@@ -78,7 +91,8 @@ const handleOperatorInput = (inputOperator) => {
         if (finalResult) {
             // If a previous calculation has been performed, start a new operation
             a = finalResult.toString();
-            displayResult.textContent = a
+            displayResult.textContent = a;
+            secondaryDisplay.textContent = a;
             b = '';
             operator = '';
             finalResult = null;
@@ -87,6 +101,7 @@ const handleOperatorInput = (inputOperator) => {
 
     operator = inputOperator;
     displayResult.textContent += " " + operator + " ";
+    secondaryDisplay.textContent += " " + operator + " ";
     console.log(operator)
 }
 
@@ -109,10 +124,13 @@ function getDecimal() {
     if (a && !operator && !a.includes('.')) {
         a += '.';
         displayResult.textContent = a;
+        secondaryDisplay.textContent = a;
+
     }
     if (b && operator && !b.includes('.')) {
         b += '.';
-        displayResult.textContent += '.';
+        displayResult.textContent = b;
+        secondaryDisplay.textContent += '.';
 
     }
 
@@ -125,40 +143,39 @@ const clearAll = () => {
     b = '';
     operator = null;
     displayResult.textContent = '0';
+    secondaryDisplay.textContent = '0';
     finalResult = '';
 }
 clear.addEventListener('click', clearAll);
 
 
 function handleDeleteKey() {
-
-
     if (operator) {
 
         b = b.slice(0, -1);
-        
+
     }
     displayResult.textContent = displayResult.textContent.slice(0, -1);
-
-     if (!operator) {
+    secondaryDisplay.textContent = secondaryDisplay.textContent.slice(0, -1);
+    if (!operator) {
 
         a = a.slice(0, -1);
-        
+
     }
     displayResult.textContent = displayResult.textContent.slice(0, -1);
+    secondaryDisplay.textContent = secondaryDisplay.textContent.slice(0, -1);
 
-if (displayResult.textContent === "") {
-  
-    a = '';
-    b = '';
-    operator = null;
-    displayResult.textContent = '0';
-    finalResult = '';
-    
-    
-}
+    if (displayResult.textContent === "") {
 
-};  
+        a = '';
+        b = '';
+        operator = null;
+        displayResult.textContent = '0';
+        finalResult = '';
+
+    }
+
+};
 del.addEventListener('click', handleDeleteKey);
 
 
